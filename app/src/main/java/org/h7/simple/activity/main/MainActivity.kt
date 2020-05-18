@@ -35,13 +35,14 @@ abstract class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        AppCenter.start(getApplication(), "357a5798-f037-43ea-aa56-63d771c47fd5",
+        Analytics.class, Crashes.class);
         modelNavigation = getNavViewModel()
         binding.footer = modelNavigation.getMenuFooter(this)
         binding.header = modelNavigation.getMenuHeader(this)
         initMenu()
         setSupportActionBar(toolbar)
-        AppCenter.start(getApplication(), "357a5798-f037-43ea-aa56-63d771c47fd5",
-        Analytics.class, Crashes.class);
+      
         val toggle = EndDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
