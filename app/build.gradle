@@ -81,6 +81,9 @@ dependencies {
     implementation "android.arch.lifecycle:viewmodel:$viewmodel_version"
 
     implementation "com.squareup.picasso:picasso:$picasso_version"
+    def appCenterSdkVersion = '3.2.1'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
 
 kapt {
