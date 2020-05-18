@@ -22,7 +22,9 @@ import org.h7.simple.data.menu.MenuItem
 import org.h7.simple.data.menu.OnMenuClickListener
 import org.h7.simple.databinding.ActivityMainBinding
 import org.h7.simple.widget.EndDrawerToggle
-
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 abstract class MainActivity : AppCompatActivity() {
     abstract fun onMenuItemClick(item: MenuItem):Boolean
@@ -38,7 +40,8 @@ abstract class MainActivity : AppCompatActivity() {
         binding.header = modelNavigation.getMenuHeader(this)
         initMenu()
         setSupportActionBar(toolbar)
-
+        AppCenter.start(getApplication(), "357a5798-f037-43ea-aa56-63d771c47fd5",
+        Analytics.class, Crashes.class);
         val toggle = EndDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
